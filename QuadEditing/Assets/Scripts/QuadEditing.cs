@@ -93,7 +93,7 @@ public class QuadEditing : MonoBehaviour
         //initialize first quads
         CreateStartQuad();
 
-        StartCoroutine(CreateQuads());
+        //StartCoroutine(CreateQuads());
     }
 
     private void CreateQuadLeft()
@@ -159,7 +159,7 @@ public class QuadEditing : MonoBehaviour
         triangles.Add(leftPoint);
     }
 
-    private void ClearLastQuad()
+    public void ClearLastQuad()
     {
         newTriangles.Clear();
 
@@ -194,19 +194,17 @@ public class QuadEditing : MonoBehaviour
         }      
     }
 
-    private void CreateNext()
+    public void CreateNext()
     {
         if(mark > 2)
         {
             mark--;
             CreateQuadRight();
-            ClearLastQuad();
         }
         else if(mark < -2)
         {
             mark++;
-            CreateQuadLeft();
-            ClearLastQuad();
+            CreateQuadLeft();      
         }
         else
         {
@@ -214,21 +212,18 @@ public class QuadEditing : MonoBehaviour
             {
                 mark++;
                 CreateQuadLeft();
-                ClearLastQuad();
             }
             else
             {
                 mark--;
                 CreateQuadRight();
-                ClearLastQuad();
             }
         }
 
     }
 
-    private IEnumerator CreateQuads()
-    {
-        
+    public IEnumerator CreateQuads()
+    {   
         CreateNext();
         float x = Random.Range(0f, 1f);
         if(x < 0.2)
@@ -238,9 +233,6 @@ public class QuadEditing : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         fadeAnim.SetBool("fade", false);
-
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(CreateQuads());
     }
 
     private void CreatePickup(Vector3 pointA, Vector3 pointB)

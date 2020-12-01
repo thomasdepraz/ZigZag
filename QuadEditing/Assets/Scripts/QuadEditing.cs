@@ -11,6 +11,7 @@ public class QuadEditing : MonoBehaviour
     private Mesh mesh;
     private List<Vector3> vertices = new List<Vector3>();
     private List<int> triangles = new List<int>();
+    private MeshCollider meshCollider;
     public int startQuadsCount;
 
     private List<Vector3> newVertices = new List<Vector3>();
@@ -73,6 +74,8 @@ public class QuadEditing : MonoBehaviour
         var filterFade = meshFadeObj.GetComponent<MeshFilter>();
         meshFade = filterFade.mesh;
         fadeAnim = meshFadeObj.GetComponent<Animator>();
+
+        meshCollider = GetComponent<MeshCollider>();
 
         //Get original mesh vertices and set triangles
         mesh.GetVertices(vertices);
@@ -191,7 +194,13 @@ public class QuadEditing : MonoBehaviour
             {
                 CreateQuadRight();
             }
-        }      
+        }
+        // collider calculation
+        Mesh newMesh = new Mesh();
+        newMesh.vertices = mesh.vertices;
+        newMesh.triangles = mesh.triangles;
+        mesh.RecalculateBounds();
+        meshCollider.sharedMesh = newMesh;
     }
 
     public void CreateNext()
@@ -220,6 +229,12 @@ public class QuadEditing : MonoBehaviour
             }
         }
 
+        // collider calculation
+         Mesh newMesh = new Mesh();
+         newMesh.vertices = mesh.vertices;
+         newMesh.triangles = mesh.triangles;
+         mesh.RecalculateBounds();
+         meshCollider.sharedMesh = newMesh;
     }
 
     public IEnumerator CreateQuads()

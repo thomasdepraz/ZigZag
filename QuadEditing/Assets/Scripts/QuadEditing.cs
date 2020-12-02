@@ -38,9 +38,6 @@ public class QuadEditing : MonoBehaviour
     Vector3 leftVector;
     Vector3 rightVector;
 
-    //Bools
-    private bool isLastLeft = false;
-
     //Pickups
     public List<GameObject> pickups = new List<GameObject>();
 
@@ -119,9 +116,7 @@ public class QuadEditing : MonoBehaviour
         CreateTriangles();
 
         mesh.vertices = vertices.ToArray();
-        mesh.triangles = triangles.ToArray();
-
-        isLastLeft = true;    
+        mesh.triangles = triangles.ToArray();   
     }
 
     private void CreateQuadRight()
@@ -145,8 +140,6 @@ public class QuadEditing : MonoBehaviour
 
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
-        
-        isLastLeft = false;
     }
 
     private void CreateTriangles()
@@ -184,7 +177,8 @@ public class QuadEditing : MonoBehaviour
 
     private void CreateStartQuad()
     {
-        for(int i = 0; i < startQuadsCount; i++ )
+        CreateQuadLeft();
+        for (int i = 0; i < startQuadsCount -1; i++ )
         {
             if (Random.Range(0f, 1f) > 0.5f)
             {

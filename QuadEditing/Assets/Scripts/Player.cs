@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,8 +9,11 @@ public class Player : MonoBehaviour
     private Vector3 rotation;
     private float distance = 0;
     public float minDistance;
-    private int playerscore;
+    private int playerScore;
     public GameObject raycastingObject;
+    public Text scoreText;
+
+    bool startMoving = false;
 
     public QuadEditing terrain;
     // Start is called before the first frame update
@@ -23,22 +25,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-
-        if(Input.GetMouseButtonDown(0))
+        if(startMoving)
         {
-            Rotate();
+            Move();
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                Rotate();
+            }
+            if(distance >= 1)
+            {
+                distance = 0;
+                terrain.ClearLastQuad();
+                terrain.StartCoroutine(terrain.CreateQuads());
+            }
+
+            DetectPickup();
+            DetectTerrain();
         }
-        if(distance >= 1)
+
+        if(Input.GetMouseButtonDown(0) && !startMoving)
         {
-            distance = 0;
-            terrain.ClearLastQuad();
-            terrain.StartCoroutine(terrain.CreateQuads());
+            startMoving = true;
         }
-
-        DetectPickup();
-        DetectTerrain();
-
         
     }
 
@@ -73,9 +82,9 @@ public class Player : MonoBehaviour
             if((transform.position - hitInfo.transform.position).magnitude <= minDistance)
             {
                 hitInfo.collider.gameObject.SetActive(false);
-                playerscore++;
-                Debug.Log(playerscore);
-                if (playerscore % 3 == 0)
+                playerScore++;
+                scoreText.text = "Score : " + playerScore;
+                if (playerScore % 3 == 0)
                 {
                     speed += 0.5f;
                 }
@@ -85,11 +94,10 @@ public class Player : MonoBehaviour
 
     void DetectTerrain()
     {
-        Debug.DrawRay(raycastingObject.transform.position, raycastingObject.transform.forward);
         Physics.Raycast(raycastingObject.transform.position, raycastingObject.transform.forward, out RaycastHit hit);
         if(hit.collider == null)
         {
-            Time.timeScale = 0;
+            gameObject.SetActive(false);
         }
     }
 }

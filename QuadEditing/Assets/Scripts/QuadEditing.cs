@@ -247,7 +247,7 @@ public class QuadEditing : MonoBehaviour
     private void CreatePickup(Vector3 pointA, Vector3 pointB)
     {
         Vector3 origin = (pointA + pointB) / 2;
-        origin.z = 0;
+        origin.z = -0.2f;
 
         for(int i = 0; i < pickups.Count; i ++ )
         {

@@ -4,6 +4,8 @@
     {
         _MainTex("Texture", 2D) = "white" {}
         _Factor("Factor", Range(0., 2.)) = 0.2
+        _Color("Main Color", Color) = (1,1,1,1)
+        _SecColor("Secondary Color", Color) = (1,1,1,1)
     }
         SubShader
         {
@@ -46,6 +48,8 @@
                 }
 
                 float _Factor;
+                fixed4 _Color;
+                fixed4 _SecColor;
 
                 [maxvertexcount(24)]
                 void geom(triangle v2g IN[3], inout TriangleStream<g2f> tristream)
@@ -60,36 +64,36 @@
                     {
                         o.pos = UnityObjectToClipPos(IN[i].vertex);
                         o.uv = IN[i].uv;
-                        o.col = fixed4(0., 0., 0., 1.);
+                        o.col = _SecColor;
                         tristream.Append(o);
 
                         o.pos = UnityObjectToClipPos(IN[i].vertex + float4(normalFace, 0) * _Factor);
                         o.uv = IN[i].uv;
-                        o.col = fixed4(1., 1., 1., 1.);
+                        o.col = _Color;
                         tristream.Append(o);
 
                         uint inext = (i + 1) % 3;
 
                         o.pos = UnityObjectToClipPos(IN[inext].vertex);
                         o.uv = IN[inext].uv;
-                        o.col = fixed4(0., 0., 0., 1.);
+                        o.col = _SecColor;
                         tristream.Append(o);
 
                         tristream.RestartStrip();
 
                         o.pos = UnityObjectToClipPos(IN[i].vertex + float4(normalFace, 0) * _Factor);
                         o.uv = IN[i].uv;
-                        o.col = fixed4(1., 1., 1., 1.);
+                        o.col = _Color;
                         tristream.Append(o);
 
                         o.pos = UnityObjectToClipPos(IN[inext].vertex);
                         o.uv = IN[inext].uv;
-                        o.col = fixed4(0., 0., 0., 1.);
+                        o.col = _SecColor;
                         tristream.Append(o);
 
                         o.pos = UnityObjectToClipPos(IN[inext].vertex + float4(normalFace, 0) * _Factor);
                         o.uv = IN[inext].uv;
-                        o.col = fixed4(1., 1., 1., 1.);
+                        o.col = _Color;
                         tristream.Append(o);
 
                         tristream.RestartStrip();
@@ -99,7 +103,7 @@
                     {
                         o.pos = UnityObjectToClipPos(IN[i].vertex + float4(normalFace, 0) * _Factor);
                         o.uv = IN[i].uv;
-                        o.col = fixed4(1., 1., 1., 1.);
+                        o.col = _Color;
                         tristream.Append(o);
                     }
 
@@ -109,7 +113,7 @@
                     {
                         o.pos = UnityObjectToClipPos(IN[i].vertex);
                         o.uv = IN[i].uv;
-                        o.col = fixed4(0., 0., 0., 1.);
+                        o.col = _SecColor;
                         tristream.Append(o);
                     }
 

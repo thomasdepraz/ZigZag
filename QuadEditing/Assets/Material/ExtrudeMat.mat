@@ -25,4 +25,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Factor: 0.44
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 0.3301887, g: 0, b: 0.4117647, a: 1}
+    - _SecColor: {r: 0.7877358, g: 0.81914216, b: 1, a: 1}

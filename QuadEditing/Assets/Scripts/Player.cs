@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
             if(distance >= 1)
             {
                 distance = 0;
-                terrain.ClearLastQuad();
-                terrain.StartCoroutine(terrain.CreateQuads());
+                terrain.ClearLastQuad(speed);
+                terrain.StartCoroutine(terrain.CreateQuads(speed));
             }
 
             DetectPickup();

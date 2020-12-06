@@ -54,7 +54,7 @@ public class QuadEditing : MonoBehaviour
         }
         if (GUI.Button(new Rect(15, 80, 90, 20), new GUIContent("Clear")))
         {
-            ClearLastQuad();
+            ClearLastQuad(1);
         }
         if (GUI.Button(new Rect(15, 105, 90, 20), new GUIContent("Next")))
         {
@@ -92,8 +92,6 @@ public class QuadEditing : MonoBehaviour
 
         //initialize first quads
         CreateStartQuad();
-
-        //StartCoroutine(CreateQuads());
     }
 
     private void CreateQuadLeft()
@@ -155,7 +153,7 @@ public class QuadEditing : MonoBehaviour
         triangles.Add(leftPoint);
     }
 
-    public void ClearLastQuad()
+    public void ClearLastQuad(float speed)
     {
         newTriangles.Clear();
 
@@ -169,7 +167,8 @@ public class QuadEditing : MonoBehaviour
         meshFade.triangles = newTriangles.ToArray();
         meshFade.vertices = vertices.ToArray();
 
-        fadeAnim.SetBool("fade", true);
+        fadeAnim.speed = speed;
+        meshFadeObj.SetActive(true);
 
         mesh.triangles = triangles.ToArray();
         mesh.vertices = vertices.ToArray();
@@ -231,7 +230,7 @@ public class QuadEditing : MonoBehaviour
          meshCollider.sharedMesh = newMesh;
     }
 
-    public IEnumerator CreateQuads()
+    public IEnumerator CreateQuads(float speed)
     {   
         CreateNext();
         float x = Random.Range(0f, 1f);
@@ -239,9 +238,9 @@ public class QuadEditing : MonoBehaviour
         {
             CreatePickup(vertices[topPoint], vertices[bottomPoint]);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f/speed);
 
-        fadeAnim.SetBool("fade", false);
+        meshFadeObj.SetActive(false);
     }
 
     private void CreatePickup(Vector3 pointA, Vector3 pointB)

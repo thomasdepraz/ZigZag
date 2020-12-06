@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 343909317}
   - component: {fileID: 343909316}
   - component: {fileID: 343909315}
+  - component: {fileID: 343909319}
   m_Layer: 0
   m_Name: Pickup_04
   m_TagString: Untagged
@@ -431,6 +432,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343909313}
   m_Mesh: {fileID: 4300000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
+--- !u!95 &343909319
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343909313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f49bcad93470a4cb5c08d4dbbb29e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &365493850
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +794,7 @@ GameObject:
   - component: {fileID: 611173796}
   - component: {fileID: 611173795}
   - component: {fileID: 611173794}
+  - component: {fileID: 611173798}
   m_Layer: 0
   m_Name: Pickup_02
   m_TagString: Untagged
@@ -879,6 +900,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611173792}
   m_Mesh: {fileID: 4300000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
+--- !u!95 &611173798
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611173792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f49bcad93470a4cb5c08d4dbbb29e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &645217113
 GameObject:
   m_ObjectHideFlags: 0
@@ -5724,6 +5764,7 @@ GameObject:
   - component: {fileID: 756625043}
   - component: {fileID: 756625042}
   - component: {fileID: 756625041}
+  - component: {fileID: 756625045}
   m_Layer: 0
   m_Name: Pickup_02
   m_TagString: Untagged
@@ -5829,6 +5870,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756625039}
   m_Mesh: {fileID: 4300000, guid: d5201c54bfe2c0242acafec0421e0d8e, type: 3}
+--- !u!95 &756625045
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756625039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f49bcad93470a4cb5c08d4dbbb29e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &761523832
 GameObject:
   m_ObjectHideFlags: 0
@@ -6423,6 +6483,7 @@ GameObject:
   - component: {fileID: 2026737767}
   - component: {fileID: 2026737766}
   - component: {fileID: 2026737765}
+  - component: {fileID: 2026737770}
   m_Layer: 0
   m_Name: Pickup_05
   m_TagString: Untagged
@@ -6528,6 +6589,25 @@ Transform:
   m_Father: {fileID: 1230113579}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2026737770
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026737764}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f49bcad93470a4cb5c08d4dbbb29e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2054396199
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,7 +6674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2109107406
 Animator:
   serializedVersion: 3
@@ -6855,6 +6935,7 @@ GameObject:
   - component: {fileID: 5055230743908549862}
   - component: {fileID: 5180122088594838930}
   - component: {fileID: 5077230724527575777}
+  - component: {fileID: 5077230724527575778}
   m_Layer: 0
   m_Name: Pickup_01
   m_TagString: Untagged
@@ -6875,6 +6956,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.5, y: 6.5, z: 2.7760828}
   m_Center: {x: 0, y: 0, z: -0.00000005960464}
+--- !u!95 &5077230724527575778
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077230724527575776}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f49bcad93470a4cb5c08d4dbbb29e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &5077889999693836962
 Transform:
   m_ObjectHideFlags: 0

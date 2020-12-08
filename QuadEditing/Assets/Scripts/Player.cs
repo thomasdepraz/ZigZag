@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public float speed;
+    public float maxSpeed;
     private Vector3 rotation;
     private float distance = 0;
     public float minDistance;
     private int playerScore;
     public GameObject raycastingObject;
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
 
-    bool startMoving = false;
+    private bool startMoving = false;
+    private bool canMove = true;
 
     public QuadEditing terrain;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,7 +27,7 @@ public class Player : MonoBehaviour
         {
             Move();
 
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && canMove)
             {
                 Rotate();
             }
@@ -83,10 +81,12 @@ public class Player : MonoBehaviour
             {
                 hitInfo.collider.gameObject.SetActive(false);
                 playerScore++;
-                scoreText.text = "Score : " + playerScore;
-                if (playerScore % 3 == 0)
+                scoreText.text = playerScore.ToString();
+                speed += 0.05f;
+
+                if(speed >= maxSpeed)
                 {
-                    speed += 0.5f;
+                    speed = maxSpeed;
                 }
             }
         }
@@ -97,7 +97,14 @@ public class Player : MonoBehaviour
         Physics.Raycast(raycastingObject.transform.position, raycastingObject.transform.forward, out RaycastHit hit);
         if(hit.collider == null)
         {
-            gameObject.SetActive(false);
+            canMove = false;
+            StartCoroutine(Death());
         }
+    }
+
+    private IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }
